@@ -14,7 +14,7 @@
    key.addEventListener("click", () => playTune(key.dataset.key));
  });
 
- const handleVolume = (e) => {
+ const handleVolume = (e) => { // essa função muda o valor do volumeNow para o valor do input range
     volumeNow = e.target.value;
  }
 
