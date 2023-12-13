@@ -1,7 +1,10 @@
  const pianoKeys = document.querySelectorAll(".piano-keys .key"); //selecionando todas keys juntas
+ const volumeSlider = document.querySelector(".volume-slider input");
+ let volumeNow = 0.5
 
  const playTune = (key) => {
-  let audio = new Audio(`tunes/${key}.wav`); // passando a key baseado na tecla pressionada
+  audio = new Audio(`tunes/${key}.wav`); // passando a key baseado na tecla pressionada
+  audio.volume = volumeNow;
   audio.play();
  }
 
@@ -10,8 +13,13 @@
    key.addEventListener("click", () => playTune(key.dataset.key));
  });
 
+ const handleVolume = (e) => {
+    volumeNow = e.target.value;
+ }
+
  const pressedKey = (e) => {
   playTune(e.key);
  }
 
+ volumeSlider.addEventListener("input", handleVolume);
  document.addEventListener("keydown", pressedKey);
